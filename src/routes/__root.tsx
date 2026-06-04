@@ -159,7 +159,7 @@ function Shell() {
   // Prototype Mode: Always show the full app shell. 
   // Individual routes handle rendering content based on the role.
   return (
-    <div className="flex min-h-screen w-full bg-background text-foreground">
+    <div className="flex min-h-screen w-full bg-background text-foreground relative">
       <AppSidebar />
       <div className="flex-1 min-w-0 flex flex-col">
         <Topbar />
@@ -168,6 +168,36 @@ function Shell() {
         </main>
       </div>
       <FloatingVoiceAI />
+      
+      {/* Prototype Quick Switcher */}
+      <div className="fixed bottom-6 left-6 z-50 group">
+        <div className="absolute bottom-full left-0 mb-4 flex flex-col gap-2 pointer-events-none opacity-0 group-hover:pointer-events-auto group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+          {[
+            { id: "farmer", label: "Farmer", color: "from-amber-glow to-forest" },
+            { id: "officer", label: "Officer", color: "from-blue-500 to-indigo-600" },
+            { id: "cooperative", label: "Cooperative", color: "from-purple-500 to-pink-600" },
+            { id: "agronomist", label: "Agronomist", color: "from-green-500 to-teal-600" },
+            { id: "researcher", label: "Researcher", color: "from-orange-500 to-red-600" },
+            { id: "admin", label: "Admin", color: "from-slate-700 to-slate-900" },
+          ].map((r) => (
+            <Link
+              key={r.id}
+              to={`/${r.id}`}
+              className={`px-4 py-2 rounded-xl bg-gradient-to-r ${r.color} text-white text-xs font-bold shadow-lg hover:scale-105 transition active:scale-95 whitespace-nowrap`}
+            >
+              Switch to {r.label}
+            </Link>
+          ))}
+        </div>
+        <button className="w-12 h-12 rounded-full bg-sidebar border border-sidebar-border shadow-2xl flex items-center justify-center hover:bg-sidebar-accent transition-colors">
+          <div className="grid grid-cols-2 gap-1 px-3">
+            <div className="w-1.5 h-1.5 rounded-full bg-amber-glow" />
+            <div className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+            <div className="w-1.5 h-1.5 rounded-full bg-purple-500" />
+            <div className="w-1.5 h-1.5 rounded-full bg-green-500" />
+          </div>
+        </button>
+      </div>
     </div>
   );
 }
