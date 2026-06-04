@@ -63,7 +63,7 @@ export const ROLE_META: Record<Role, {
 };
 
 const farmerNav: NavItem[] = [
-  { to: "/", label: "Dashboard", icon: LayoutDashboard },
+  { to: "/farmer", label: "Dashboard", icon: LayoutDashboard },
   { to: "/climate", label: "Climate Intelligence", icon: CloudSun },
   { to: "/weather", label: "Weather Alerts", icon: AlertTriangle },
   { to: "/crops", label: "Crop Monitoring", icon: Sprout },
@@ -77,7 +77,7 @@ const farmerNav: NavItem[] = [
 ];
 
 const officerNav: NavItem[] = [
-  { to: "/", label: "Overview", icon: LayoutDashboard },
+  { to: "/officer", label: "Overview", icon: LayoutDashboard },
   { to: "/climate", label: "Climate Intelligence", icon: CloudSun },
   { to: "/districts", label: "District Monitoring", icon: Map },
   { to: "/timeline", label: "Farmer Activity", icon: Radio },
@@ -90,7 +90,7 @@ const officerNav: NavItem[] = [
 ];
 
 const coopNav: NavItem[] = [
-  { to: "/", label: "Cooperative Hub", icon: LayoutDashboard },
+  { to: "/cooperative", label: "Cooperative Hub", icon: LayoutDashboard },
   { to: "/cooperatives", label: "Members", icon: Users },
   { to: "/crops", label: "Shared Fields", icon: Sprout },
   { to: "/marketplace", label: "Aggregated Sales", icon: Store },
@@ -101,7 +101,7 @@ const coopNav: NavItem[] = [
 ];
 
 const agronomistNav: NavItem[] = [
-  { to: "/", label: "Advisory Desk", icon: LayoutDashboard },
+  { to: "/agronomist", label: "Advisory Desk", icon: LayoutDashboard },
   { to: "/crops", label: "Crop Diagnostics", icon: Sprout },
   { to: "/experts", label: "Farmer Consults", icon: GraduationCap },
   { to: "/climate", label: "Climate Intelligence", icon: CloudSun },
@@ -111,7 +111,7 @@ const agronomistNav: NavItem[] = [
 ];
 
 const researcherNav: NavItem[] = [
-  { to: "/", label: "Research Lab", icon: LayoutDashboard },
+  { to: "/researcher", label: "Research Lab", icon: LayoutDashboard },
   { to: "/intelligence", label: "Models & Forecasts", icon: Brain },
   { to: "/climate", label: "Climate Datasets", icon: CloudSun },
   { to: "/districts", label: "Geospatial", icon: Map },
@@ -120,7 +120,7 @@ const researcherNav: NavItem[] = [
 ];
 
 const adminNav: NavItem[] = [
-  { to: "/", label: "Platform Health", icon: LayoutDashboard },
+  { to: "/admin", label: "Platform Health", icon: LayoutDashboard },
   { to: "/cooperatives", label: "Organizations", icon: Users },
   { to: "/reports", label: "System Reports", icon: FileBarChart },
   { to: "/intelligence", label: "AI Operations", icon: Brain },
