@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
-import type { Role } from "@/lib/roles";
+import { type Role, ALL_ROLES } from "@/lib/roles";
 
 type Ctx = {
   role: Role | null;
@@ -24,8 +24,17 @@ export function RoleProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     try {
-      const stored = localStorage.getItem(KEY) as Role | null;
-      if (stored) setRoleState(stored);
+      const params = new URLSearchParams(window.location.search);
+      const urlRole = params.get("role") as Role | null;
+      
+      if (urlRole && ALL_ROLES.includes(urlRole)) {
+        setRoleState(urlRole);
+        localStorage.setItem(KEY, urlRole);
+      } else {
+        const stored = localStorage.getItem(KEY) as Role | null;
+        if (stored) setRoleState(stored);
+      }
+      
       const storedEmail = localStorage.getItem(EMAIL_KEY);
       if (storedEmail) setEmailState(storedEmail);
     } catch {}

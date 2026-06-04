@@ -133,15 +133,20 @@ function RootComponent() {
 
 function Shell() {
   const { role, mounted } = useRole();
-  const path = useRouterState({ select: (s) => s.location.pathname });
+  const state = useRouterState();
+  const path = state.location.pathname;
+  const search = state.location.search;
   const navigate = useNavigate();
   const authPaths = ["/login", "/signin", "/signup", "/otp", "/forgot", "/reset"];
   const onAuth = authPaths.includes(path);
+  const hasRoleParam = !!search.role;
 
   // Redirect to /login when role is missing.
   useEffect(() => {
-    if (mounted && !role && !onAuth) navigate({ to: "/login", replace: true });
-  }, [mounted, role, onAuth, navigate]);
+    if (mounted && !role && !onAuth && !hasRoleParam) {
+      navigate({ to: "/login", replace: true });
+    }
+  }, [mounted, role, onAuth, hasRoleParam, navigate]);
 
   // Avoid SSR/client mismatch: only render the authed shell after mount.
   if (!mounted) {

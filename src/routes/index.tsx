@@ -10,7 +10,14 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const { role } = useRole();
+  
   if (role === "officer") return <OfficerDashboard />;
-  if (role === "farmer" || !role) return <FarmerDashboard />;
-  return <StubDashboard role={role} />;
+  if (role === "farmer") return <FarmerDashboard />;
+  if (role === "cooperative" || role === "agronomist" || role === "researcher" || role === "admin") {
+    return <StubDashboard role={role} />;
+  }
+  
+  // Default to farmer if role is missing (should be handled by Root shell redirect, 
+  // but if role param is used, we need to show something).
+  return <FarmerDashboard />;
 }

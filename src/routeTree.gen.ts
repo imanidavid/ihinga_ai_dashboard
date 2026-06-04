@@ -16,19 +16,25 @@ import { Route as SignupRouteImport } from './routes/signup'
 import { Route as SigninRouteImport } from './routes/signin'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as ResetRouteImport } from './routes/reset'
+import { Route as ResearcherRouteImport } from './routes/researcher'
 import { Route as ReportsRouteImport } from './routes/reports'
 import { Route as OtpRouteImport } from './routes/otp'
+import { Route as OfficerRouteImport } from './routes/officer'
 import { Route as MarketplaceRouteImport } from './routes/marketplace'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as IntelligenceRouteImport } from './routes/intelligence'
 import { Route as ForgotRouteImport } from './routes/forgot'
+import { Route as FarmerRouteImport } from './routes/farmer'
 import { Route as ExpertsRouteImport } from './routes/experts'
 import { Route as DistrictsRouteImport } from './routes/districts'
 import { Route as CropsRouteImport } from './routes/crops'
 import { Route as CooperativesRouteImport } from './routes/cooperatives'
+import { Route as CooperativeRouteImport } from './routes/cooperative'
 import { Route as ClimateRouteImport } from './routes/climate'
 import { Route as AlertsRouteImport } from './routes/alerts'
 import { Route as AiRouteImport } from './routes/ai'
+import { Route as AgronomistRouteImport } from './routes/agronomist'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 
 const WeatherRoute = WeatherRouteImport.update({
@@ -66,6 +72,11 @@ const ResetRoute = ResetRouteImport.update({
   path: '/reset',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResearcherRoute = ResearcherRouteImport.update({
+  id: '/researcher',
+  path: '/researcher',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ReportsRoute = ReportsRouteImport.update({
   id: '/reports',
   path: '/reports',
@@ -74,6 +85,11 @@ const ReportsRoute = ReportsRouteImport.update({
 const OtpRoute = OtpRouteImport.update({
   id: '/otp',
   path: '/otp',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OfficerRoute = OfficerRouteImport.update({
+  id: '/officer',
+  path: '/officer',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MarketplaceRoute = MarketplaceRouteImport.update({
@@ -96,6 +112,11 @@ const ForgotRoute = ForgotRouteImport.update({
   path: '/forgot',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FarmerRoute = FarmerRouteImport.update({
+  id: '/farmer',
+  path: '/farmer',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ExpertsRoute = ExpertsRouteImport.update({
   id: '/experts',
   path: '/experts',
@@ -116,6 +137,11 @@ const CooperativesRoute = CooperativesRouteImport.update({
   path: '/cooperatives',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CooperativeRoute = CooperativeRouteImport.update({
+  id: '/cooperative',
+  path: '/cooperative',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ClimateRoute = ClimateRouteImport.update({
   id: '/climate',
   path: '/climate',
@@ -131,6 +157,16 @@ const AiRoute = AiRouteImport.update({
   path: '/ai',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AgronomistRoute = AgronomistRouteImport.update({
+  id: '/agronomist',
+  path: '/agronomist',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -139,19 +175,25 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/agronomist': typeof AgronomistRoute
   '/ai': typeof AiRoute
   '/alerts': typeof AlertsRoute
   '/climate': typeof ClimateRoute
+  '/cooperative': typeof CooperativeRoute
   '/cooperatives': typeof CooperativesRoute
   '/crops': typeof CropsRoute
   '/districts': typeof DistrictsRoute
   '/experts': typeof ExpertsRoute
+  '/farmer': typeof FarmerRoute
   '/forgot': typeof ForgotRoute
   '/intelligence': typeof IntelligenceRoute
   '/login': typeof LoginRoute
   '/marketplace': typeof MarketplaceRoute
+  '/officer': typeof OfficerRoute
   '/otp': typeof OtpRoute
   '/reports': typeof ReportsRoute
+  '/researcher': typeof ResearcherRoute
   '/reset': typeof ResetRoute
   '/settings': typeof SettingsRoute
   '/signin': typeof SigninRoute
@@ -162,19 +204,25 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/agronomist': typeof AgronomistRoute
   '/ai': typeof AiRoute
   '/alerts': typeof AlertsRoute
   '/climate': typeof ClimateRoute
+  '/cooperative': typeof CooperativeRoute
   '/cooperatives': typeof CooperativesRoute
   '/crops': typeof CropsRoute
   '/districts': typeof DistrictsRoute
   '/experts': typeof ExpertsRoute
+  '/farmer': typeof FarmerRoute
   '/forgot': typeof ForgotRoute
   '/intelligence': typeof IntelligenceRoute
   '/login': typeof LoginRoute
   '/marketplace': typeof MarketplaceRoute
+  '/officer': typeof OfficerRoute
   '/otp': typeof OtpRoute
   '/reports': typeof ReportsRoute
+  '/researcher': typeof ResearcherRoute
   '/reset': typeof ResetRoute
   '/settings': typeof SettingsRoute
   '/signin': typeof SigninRoute
@@ -186,19 +234,25 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/agronomist': typeof AgronomistRoute
   '/ai': typeof AiRoute
   '/alerts': typeof AlertsRoute
   '/climate': typeof ClimateRoute
+  '/cooperative': typeof CooperativeRoute
   '/cooperatives': typeof CooperativesRoute
   '/crops': typeof CropsRoute
   '/districts': typeof DistrictsRoute
   '/experts': typeof ExpertsRoute
+  '/farmer': typeof FarmerRoute
   '/forgot': typeof ForgotRoute
   '/intelligence': typeof IntelligenceRoute
   '/login': typeof LoginRoute
   '/marketplace': typeof MarketplaceRoute
+  '/officer': typeof OfficerRoute
   '/otp': typeof OtpRoute
   '/reports': typeof ReportsRoute
+  '/researcher': typeof ResearcherRoute
   '/reset': typeof ResetRoute
   '/settings': typeof SettingsRoute
   '/signin': typeof SigninRoute
@@ -211,19 +265,25 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/admin'
+    | '/agronomist'
     | '/ai'
     | '/alerts'
     | '/climate'
+    | '/cooperative'
     | '/cooperatives'
     | '/crops'
     | '/districts'
     | '/experts'
+    | '/farmer'
     | '/forgot'
     | '/intelligence'
     | '/login'
     | '/marketplace'
+    | '/officer'
     | '/otp'
     | '/reports'
+    | '/researcher'
     | '/reset'
     | '/settings'
     | '/signin'
@@ -234,19 +294,25 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/admin'
+    | '/agronomist'
     | '/ai'
     | '/alerts'
     | '/climate'
+    | '/cooperative'
     | '/cooperatives'
     | '/crops'
     | '/districts'
     | '/experts'
+    | '/farmer'
     | '/forgot'
     | '/intelligence'
     | '/login'
     | '/marketplace'
+    | '/officer'
     | '/otp'
     | '/reports'
+    | '/researcher'
     | '/reset'
     | '/settings'
     | '/signin'
@@ -257,19 +323,25 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/admin'
+    | '/agronomist'
     | '/ai'
     | '/alerts'
     | '/climate'
+    | '/cooperative'
     | '/cooperatives'
     | '/crops'
     | '/districts'
     | '/experts'
+    | '/farmer'
     | '/forgot'
     | '/intelligence'
     | '/login'
     | '/marketplace'
+    | '/officer'
     | '/otp'
     | '/reports'
+    | '/researcher'
     | '/reset'
     | '/settings'
     | '/signin'
@@ -281,19 +353,25 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRoute
+  AgronomistRoute: typeof AgronomistRoute
   AiRoute: typeof AiRoute
   AlertsRoute: typeof AlertsRoute
   ClimateRoute: typeof ClimateRoute
+  CooperativeRoute: typeof CooperativeRoute
   CooperativesRoute: typeof CooperativesRoute
   CropsRoute: typeof CropsRoute
   DistrictsRoute: typeof DistrictsRoute
   ExpertsRoute: typeof ExpertsRoute
+  FarmerRoute: typeof FarmerRoute
   ForgotRoute: typeof ForgotRoute
   IntelligenceRoute: typeof IntelligenceRoute
   LoginRoute: typeof LoginRoute
   MarketplaceRoute: typeof MarketplaceRoute
+  OfficerRoute: typeof OfficerRoute
   OtpRoute: typeof OtpRoute
   ReportsRoute: typeof ReportsRoute
+  ResearcherRoute: typeof ResearcherRoute
   ResetRoute: typeof ResetRoute
   SettingsRoute: typeof SettingsRoute
   SigninRoute: typeof SigninRoute
@@ -354,6 +432,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResetRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/researcher': {
+      id: '/researcher'
+      path: '/researcher'
+      fullPath: '/researcher'
+      preLoaderRoute: typeof ResearcherRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/reports': {
       id: '/reports'
       path: '/reports'
@@ -366,6 +451,13 @@ declare module '@tanstack/react-router' {
       path: '/otp'
       fullPath: '/otp'
       preLoaderRoute: typeof OtpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/officer': {
+      id: '/officer'
+      path: '/officer'
+      fullPath: '/officer'
+      preLoaderRoute: typeof OfficerRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/marketplace': {
@@ -396,6 +488,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ForgotRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/farmer': {
+      id: '/farmer'
+      path: '/farmer'
+      fullPath: '/farmer'
+      preLoaderRoute: typeof FarmerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/experts': {
       id: '/experts'
       path: '/experts'
@@ -424,6 +523,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CooperativesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cooperative': {
+      id: '/cooperative'
+      path: '/cooperative'
+      fullPath: '/cooperative'
+      preLoaderRoute: typeof CooperativeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/climate': {
       id: '/climate'
       path: '/climate'
@@ -445,6 +551,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AiRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/agronomist': {
+      id: '/agronomist'
+      path: '/agronomist'
+      fullPath: '/agronomist'
+      preLoaderRoute: typeof AgronomistRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -457,19 +577,25 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRoute,
+  AgronomistRoute: AgronomistRoute,
   AiRoute: AiRoute,
   AlertsRoute: AlertsRoute,
   ClimateRoute: ClimateRoute,
+  CooperativeRoute: CooperativeRoute,
   CooperativesRoute: CooperativesRoute,
   CropsRoute: CropsRoute,
   DistrictsRoute: DistrictsRoute,
   ExpertsRoute: ExpertsRoute,
+  FarmerRoute: FarmerRoute,
   ForgotRoute: ForgotRoute,
   IntelligenceRoute: IntelligenceRoute,
   LoginRoute: LoginRoute,
   MarketplaceRoute: MarketplaceRoute,
+  OfficerRoute: OfficerRoute,
   OtpRoute: OtpRoute,
   ReportsRoute: ReportsRoute,
+  ResearcherRoute: ResearcherRoute,
   ResetRoute: ResetRoute,
   SettingsRoute: SettingsRoute,
   SigninRoute: SigninRoute,
