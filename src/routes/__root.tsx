@@ -135,20 +135,10 @@ function Shell() {
   const { role, mounted } = useRole();
   const state = useRouterState();
   const path = state.location.pathname;
-  const search = state.location.search;
-  const navigate = useNavigate();
   const authPaths = ["/login", "/signin", "/signup", "/otp", "/forgot", "/reset"];
   const onAuth = authPaths.includes(path);
-  const hasRoleParam = !!search.role;
 
-  // Redirect to /login when role is missing.
-  useEffect(() => {
-    if (mounted && !role && !onAuth && !hasRoleParam) {
-      navigate({ to: "/login", replace: true });
-    }
-  }, [mounted, role, onAuth, hasRoleParam, navigate]);
-
-  // Avoid SSR/client mismatch: only render the authed shell after mount.
+  // Avoid SSR/client mismatch: only render after mount.
   if (!mounted) {
     return (
       <div className="min-h-screen w-full bg-background grid place-items-center">
@@ -157,7 +147,8 @@ function Shell() {
     );
   }
 
-  if (onAuth || !role) {
+  // If on a specific auth page, show it without the sidebar shell.
+  if (onAuth) {
     return (
       <div className="min-h-screen w-full bg-background text-foreground">
         <Outlet />
@@ -165,6 +156,8 @@ function Shell() {
     );
   }
 
+  // Prototype Mode: Always show the full app shell. 
+  // Individual routes handle rendering content based on the role.
   return (
     <div className="flex min-h-screen w-full bg-background text-foreground">
       <AppSidebar />
