@@ -9,7 +9,7 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect } from "react";
+import { useEffect, useState, useRef } from "react";
 
 import appCss from "../styles.css?url";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -137,6 +137,19 @@ function Shell() {
   const path = state.location.pathname;
   const authPaths = ["/login", "/signin", "/signup", "/otp", "/forgot", "/reset"];
   const onAuth = authPaths.includes(path);
+  
+  const [showSwitcher, setShowSwitcher] = useState(false);
+  const switcherRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (switcherRef.current && !switcherRef.current.contains(event.target as Node)) {
+        setShowSwitcher(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   // Avoid SSR/client mismatch: only render after mount.
   if (!mounted) {
@@ -170,8 +183,16 @@ function Shell() {
       <FloatingVoiceAI />
       
       {/* Prototype Quick Switcher */}
-      <div className="fixed bottom-6 left-6 z-50 group">
-        <div className="absolute bottom-full left-0 mb-4 flex flex-col gap-2 pointer-events-none opacity-0 group-hover:pointer-events-auto group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+      <div 
+        ref={switcherRef}
+        onMouseEnter={() => setShowSwitcher(true)}
+        className="fixed bottom-6 left-6 z-50"
+      >
+        <div className={`absolute bottom-full left-0 mb-4 flex flex-col gap-2 transition-all duration-300 transform ${
+          showSwitcher 
+            ? "pointer-events-auto opacity-100 translate-y-0" 
+            : "pointer-events-none opacity-0 translate-y-2"
+        }`}>
           {[
             { id: "farmer", label: "Farmer", color: "from-amber-glow to-forest" },
             { id: "officer", label: "Officer", color: "from-blue-500 to-indigo-600" },
@@ -183,6 +204,7 @@ function Shell() {
             <Link
               key={r.id}
               to={`/${r.id}`}
+              onClick={() => setShowSwitcher(false)}
               className={`px-4 py-2 rounded-xl bg-gradient-to-r ${r.color} text-white text-xs font-bold shadow-lg hover:scale-105 transition active:scale-95 whitespace-nowrap`}
             >
               Switch to {r.label}
