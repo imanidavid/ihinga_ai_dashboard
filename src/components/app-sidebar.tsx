@@ -35,6 +35,7 @@ export function AppSidebar() {
             <Link
               key={`${to}-${i}`}
               to={to}
+              search={{ role: activeRole }}
               className={`group relative flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm transition-all duration-300 ${
                 active
                   ? "bg-sidebar-accent text-sidebar-primary shadow-glow"
